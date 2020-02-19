@@ -33,14 +33,18 @@ namespace InnerExceptions
                     }
                     else
                     {
-                        throw new FileNotFoundException(filePath + "is not present", e);
+                        throw new FileNotFoundException(filePath + "is not present",e);
                     }
                 }
             }catch (Exception ex)
             {
                 Console.WriteLine("Current Exception = {0}", ex.GetType().Name);
-                Console.WriteLine("Inner Exception = {0}",ex.InnerException.GetType().Name);
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine("Inner Exception = {0}", ex.InnerException.GetType().Name);
+                }
             }
         }
     }
 }
+
